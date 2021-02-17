@@ -25,7 +25,8 @@ export default createMuiTheme({
        tab: {
         textTransform: "capitalize",
         fontWeight: 700,
-        // fontSize: "1rem",
+        fontFamily: "'Raleway', sans-serif",
+        fontSize: "1rem",
        },
        estimate: {
         fontSize: "1rem",
