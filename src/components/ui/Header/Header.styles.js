@@ -45,6 +45,18 @@ const useStyles = makeStyles((theme) => ({
       opacity: 1,
     },
   },
+
+  menuIconContainer: {
+    marginLeft: "auto",
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+  },
+  menuIcon: {
+    color: theme.palette.common.white,
+    width: "40px",
+    height: "40px",
+  },
 }));
 
 export default useStyles;

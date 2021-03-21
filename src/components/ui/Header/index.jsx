@@ -1,7 +1,9 @@
 import {
   Button,
+  IconButton,
   Menu,
   MenuItem,
+  SwipeableDrawer,
   useMediaQuery,
   useTheme,
 } from "@material-ui/core";
@@ -11,6 +13,7 @@ import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
+import MenuIcon from "@material-ui/icons/Menu";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.svg";
@@ -31,11 +34,14 @@ const HideOnScroll = (props) => {
 const Headar = (props) => {
   const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [open, setOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
+
   const [selectedIndex, setSelectedIndex] = useState(0);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const classes = useStyles();
+  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
   useEffect(() => {
     switch (window.location.pathname) {
@@ -100,17 +106,17 @@ const Headar = (props) => {
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
-    setOpen(true);
+    setOpenMenu(true);
   };
 
   const handleClose = (e) => {
     setAnchorEl(null);
-    setOpen(false);
+    setOpenMenu(false);
   };
 
   const handleMenuItemClick = (e, i) => {
     setAnchorEl(null);
-    setOpen(false);
+    setOpenMenu(false);
     setSelectedIndex(i);
   };
 
@@ -172,7 +178,7 @@ const Headar = (props) => {
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
-        open={open}
+        open={openMenu}
         onClose={handleClose}
         MenuListProps={{ onMouseLeave: handleClose }}
         classes={{ paper: classes.menu }}
@@ -198,6 +204,27 @@ const Headar = (props) => {
     </>
   );
 
+  const drawer = (
+    <>
+      <SwipeableDrawer
+        disableBackdropTransition={!iOS}
+        disableDiscovery={iOS}
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        onOpen={() => setOpenDrawer(true)}
+      >
+        Smaple drawer
+      </SwipeableDrawer>
+      <IconButton
+        onClick={() => setOpenDrawer(!openDrawer)}
+        disableRipple
+        classes={{ root: classes.menuIconContainer }}
+      >
+        <MenuIcon className={classes.menuIcon} />
+      </IconButton>
+    </>
+  );
+
   return (
     <>
       <HideOnScroll>
@@ -213,7 +240,7 @@ const Headar = (props) => {
               <img src={logo} className={classes.logo} alt="Dev" />
             </Button>
 
-            {matches ? null : tabs}
+            {matches ? drawer : tabs}
           </Toolbar>
         </AppBar>
       </HideOnScroll>
