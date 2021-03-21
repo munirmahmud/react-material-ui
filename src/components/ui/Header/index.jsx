@@ -59,6 +59,19 @@ const Headar = (props) => {
     setOpen(false);
   };
 
+  const handleMenuItemClick = (e, i) => {
+    setAnchorEl(null);
+    setOpen(false);
+    setSelectedIndex(i);
+  };
+
+  const menus = [
+    { name: "Services", link: "/services" },
+    { name: "Custom Software Development", link: "/custom-software" },
+    { name: "Mobile App Development", link: "/mobile-apps" },
+    { name: "Website Development", link: "/websites" },
+  ];
+
   return (
     <>
       <HideOnScroll>
@@ -134,50 +147,22 @@ const Headar = (props) => {
               classes={{ paper: classes.menu }}
               elevation={0}
             >
-              <MenuItem
-                component={Link}
-                to="/services"
-                onClick={() => {
-                  handleClose();
-                  setValue(1);
-                }}
-                classes={{ root: classes.menuItem }}
-              >
-                Services
-              </MenuItem>
-              <MenuItem
-                component={Link}
-                to="/custom-software"
-                onClick={() => {
-                  handleClose();
-                  setValue(1);
-                }}
-                classes={{ root: classes.menuItem }}
-              >
-                Custom Software Development
-              </MenuItem>
-              <MenuItem
-                component={Link}
-                to="/mobile-apps"
-                onClick={() => {
-                  handleClose();
-                  setValue(1);
-                }}
-                classes={{ root: classes.menuItem }}
-              >
-                Mobile App Development
-              </MenuItem>
-              <MenuItem
-                component={Link}
-                to="/websites"
-                onClick={() => {
-                  handleClose();
-                  setValue(1);
-                }}
-                classes={{ root: classes.menuItem }}
-              >
-                Website Development
-              </MenuItem>
+              {menus.map((menu, i) => (
+                <MenuItem
+                  key={i}
+                  component={Link}
+                  to={menu.link}
+                  onClick={(e) => {
+                    handleClose();
+                    setValue(1);
+                    handleMenuItemClick(e, i);
+                  }}
+                  classes={{ root: classes.menuItem }}
+                  selected={i === selectedIndex}
+                >
+                  {menu.name}
+                </MenuItem>
+              ))}
             </Menu>
           </Toolbar>
         </AppBar>
