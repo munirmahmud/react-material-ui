@@ -5,57 +5,10 @@ import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import { makeStyles } from "@material-ui/styles";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.svg";
-
-const useStyles = makeStyles((theme) => ({
-  toolbarMargin: {
-    ...theme.mixins.toolbar,
-    marginBottom: "2rem",
-  },
-  logoLink: {
-    padding: 0,
-    "&:hover": {
-      backgroundColor: "transparent",
-    },
-  },
-  logo: {
-    width: "250px",
-  },
-  tabContainer: {
-    marginLeft: "auto",
-  },
-  tabMenu: {
-    ...theme.typography.tab,
-    minWidth: 10,
-    marginLeft: "24px",
-  },
-  button: {
-    ...theme.typography.estimate,
-    borderRadius: "50px",
-    marginLeft: "50px",
-    marginRight: "25px",
-    height: "45px",
-    color: "#ffffff",
-  },
-  menu: {
-    backgroundColor: theme.palette.common.blue,
-    color: "#fff",
-    fontFamily: "'Raleway', sans-serif",
-    fontWeight: 700,
-    borderRadius: 0,
-  },
-  menuItem: {
-    ...theme.typography.tab,
-    padding: 10,
-    opacity: 0.7,
-    "&:hover": {
-      opacity: 1,
-    },
-  },
-}));
+import logo from "../../../assets/logo.svg";
+import useStyles from "./Header.styles";
 
 const HideOnScroll = (props) => {
   const { children, window } = props;
@@ -73,6 +26,7 @@ const Headar = (props) => {
   const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const classes = useStyles();
 
   useEffect(() => {
@@ -139,7 +93,7 @@ const Headar = (props) => {
                 label="Services"
                 aria-owns={anchorEl ? "simple-menu" : undefined}
                 aria-haspopup={anchorEl ? true : undefined}
-                onClick={(e) => handleClick(e)}
+                onMouseOver={(e) => handleClick(e)}
               />
               <Tab
                 className={classes.tabMenu}
