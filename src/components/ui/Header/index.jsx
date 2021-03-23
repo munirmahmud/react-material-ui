@@ -215,25 +215,42 @@ const Headar = (props) => {
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
         onOpen={() => setOpenDrawer(true)}
+        classes={{ paper: classes.drawer }}
       >
         <List disablePadding component="nav" aria-label="Sidebar Menu">
           <ListItem
-            onClick={() => setOpenDrawer(false)}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(0);
+            }}
             divider
             button
             component={Link}
             to="/"
+            selected={value === 0}
           >
-            <ListItemText disableTypography primary="Home" />
+            <ListItemText
+              className={classes.drawerItem}
+              disableTypography
+              primary="Home"
+            />
           </ListItem>
           <ListItem
-            onClick={() => setOpenDrawer(false)}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(1);
+            }}
             divider
             button
             component={Link}
             to="/services"
+            selected={value === 1}
           >
-            <ListItemText disableTypography primary="Services" />
+            <ListItemText
+              className={classes.drawerItem}
+              disableTypography
+              primary="Services"
+            />
           </ListItem>
           <ListItem
             onClick={() => setOpenDrawer(false)}
@@ -241,8 +258,13 @@ const Headar = (props) => {
             button
             component={Link}
             to="/revolution"
+            selected={value === 2}
           >
-            <ListItemText disableTypography primary="The Revolution" />
+            <ListItemText
+              className={classes.drawerItem}
+              disableTypography
+              primary="The Revolution"
+            />
           </ListItem>
           <ListItem
             onClick={() => setOpenDrawer(false)}
@@ -250,8 +272,13 @@ const Headar = (props) => {
             button
             component={Link}
             to="/about"
+            selected={value === 3}
           >
-            <ListItemText disableTypography primary="About Us" />
+            <ListItemText
+              className={classes.drawerItem}
+              disableTypography
+              primary="About Us"
+            />
           </ListItem>
           <ListItem
             onClick={() => setOpenDrawer(false)}
@@ -259,8 +286,13 @@ const Headar = (props) => {
             button
             component={Link}
             to="/contact"
+            selected={value === 4}
           >
-            <ListItemText disableTypography primary="Contact Us" />
+            <ListItemText
+              className={classes.drawerItem}
+              disableTypography
+              primary="Contact Us"
+            />
           </ListItem>
           <ListItem
             onClick={() => setOpenDrawer(false)}
@@ -268,8 +300,14 @@ const Headar = (props) => {
             button
             component={Link}
             to="/estimate"
+            className={classes.drawerItemEstimate}
+            selected={value === 5}
           >
-            <ListItemText disableTypography primary="Estimate" />
+            <ListItemText
+              className={classes.drawerItem}
+              disableTypography
+              primary="Estimate"
+            />
           </ListItem>
         </List>
       </SwipeableDrawer>

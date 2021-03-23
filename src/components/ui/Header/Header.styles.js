@@ -57,6 +57,17 @@ const useStyles = makeStyles((theme) => ({
     width: "40px",
     height: "40px",
   },
+
+  drawer: {
+    backgroundColor: theme.palette.common.blue,
+  },
+  drawerItem: {
+    ...theme.typography.tab,
+    color: theme.palette.common.white,
+  },
+  drawerItemEstimate: {
+    backgroundColor: theme.palette.common.orange,
+  },
 }));
 
 export default useStyles;
