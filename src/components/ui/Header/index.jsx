@@ -230,7 +230,11 @@ const Headar = (props) => {
             selected={value === 0}
           >
             <ListItemText
-              className={classes.drawerItem}
+              className={
+                value === 0
+                  ? [classes.drawerItem, classes.drawerItemSelected]
+                  : classes.drawerItem
+              }
               disableTypography
               primary="Home"
             />
@@ -247,13 +251,20 @@ const Headar = (props) => {
             selected={value === 1}
           >
             <ListItemText
-              className={classes.drawerItem}
+              className={
+                value === 1
+                  ? [classes.drawerItem, classes.drawerItemSelected]
+                  : classes.drawerItem
+              }
               disableTypography
               primary="Services"
             />
           </ListItem>
           <ListItem
-            onClick={() => setOpenDrawer(false)}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(2);
+            }}
             divider
             button
             component={Link}
@@ -261,13 +272,20 @@ const Headar = (props) => {
             selected={value === 2}
           >
             <ListItemText
-              className={classes.drawerItem}
+              className={
+                value === 2
+                  ? [classes.drawerItem, classes.drawerItemSelected]
+                  : classes.drawerItem
+              }
               disableTypography
               primary="The Revolution"
             />
           </ListItem>
           <ListItem
-            onClick={() => setOpenDrawer(false)}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(3);
+            }}
             divider
             button
             component={Link}
@@ -275,13 +293,20 @@ const Headar = (props) => {
             selected={value === 3}
           >
             <ListItemText
-              className={classes.drawerItem}
+              className={
+                value === 3
+                  ? [classes.drawerItem, classes.drawerItemSelected]
+                  : classes.drawerItem
+              }
               disableTypography
               primary="About Us"
             />
           </ListItem>
           <ListItem
-            onClick={() => setOpenDrawer(false)}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(4);
+            }}
             divider
             button
             component={Link}
@@ -289,13 +314,20 @@ const Headar = (props) => {
             selected={value === 4}
           >
             <ListItemText
-              className={classes.drawerItem}
+              className={
+                value === 4
+                  ? [classes.drawerItem, classes.drawerItemSelected]
+                  : classes.drawerItem
+              }
               disableTypography
               primary="Contact Us"
             />
           </ListItem>
           <ListItem
-            onClick={() => setOpenDrawer(false)}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(5);
+            }}
             divider
             button
             component={Link}
@@ -304,7 +336,11 @@ const Headar = (props) => {
             selected={value === 5}
           >
             <ListItemText
-              className={classes.drawerItem}
+              className={
+                value === 5
+                  ? [classes.drawerItem, classes.drawerItemSelected]
+                  : classes.drawerItem
+              }
               disableTypography
               primary="Estimate"
             />
